@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Apex Wire as Property">
+        <div class="slds-var-p-around_medium">
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="acc">
+                    <div class="slds-box" key={acc.Id}>
+                        <p><strong>Name :</strong> {acc.Name}</p>
+                        <p><strong>Type :</strong> {acc.Type}</p>
+                        <p><strong>Industry :</strong> {acc.Industry}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card><br>
+
+    <lightning-card title="Apex Wire as Function">
+        <div class="slds-var-p-around_medium">
+            <template if:true={accountsList}>
+                <template for:each={accountsList} for:item="acc">
+                    <div class="slds-box" key={acc.Id}>
+                        <p><strong>Name :</strong> {acc.Name}</p>
+                        <p><strong>Type :</strong> {acc.newType}</p>
+                        <p><strong>Industry :</strong> {acc.Industry}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
