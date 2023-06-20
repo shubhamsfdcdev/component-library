@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Parent To Child communication using NON PRIMITIVE Data Type">
+        <lightning-carousel>
+            <template for:each={receivedCarouselObj} for:item="objCarousel">
+                <lightning-carousel-image
+                    key={objCarousel.header}
+                    src={objCarousel.src}
+                    header={objCarousel.header}
+                    description={objCarousel.description}>
+                </lightning-carousel-image>
+            </template>
+        </lightning-carousel>
+    </lightning-card>
+</template>

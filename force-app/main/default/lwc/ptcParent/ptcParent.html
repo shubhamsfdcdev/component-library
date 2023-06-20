@@ -1,0 +1,15 @@
+<template>
+    <!-- Parent To Child communication using PRIMITIVE Data Type-->
+    <!--
+        1.Attributes in HTML are always in lower case i.e; in KebabCase. Convert CamelCase to KebabCase.
+        2.To expose the property we need to use @api.
+        3.The default value of an attribute in HTML is true.
+        4.We can pass string, boolean and number.
+    -->
+    <c-ptc-primitive-child received-number-value=1 received-text-value="sample text" received-boolean-value></c-ptc-primitive-child>
+
+
+    <!-- Parent To Child communication using NON PRIMITIVE Data Type-->
+    <br>
+    <c-ptc-non-primitive-child received-carousel-obj={carouselObj}></c-ptc-non-primitive-child>
+</template>
