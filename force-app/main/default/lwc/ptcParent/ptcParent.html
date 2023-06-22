@@ -21,4 +21,13 @@
         <c-ptc-action-at-parent-child received-progress-bar-value={progressBarValue}></c-ptc-action-at-parent-child>
     </div>
     </lightning-card>
+
+    <!-- Parent To Child communication CALLING CHILD METHOD FROM PARENT-->
+    <br>
+    <lightning-card title="Parent To Child communication CALLING CHILD METHOD FROM PARENT">
+    <div class="slds-var-m-around_medium">
+        <c-ptc-calling-child-method ></c-ptc-calling-child-method >
+        <lightning-button variant="brand" label="Reset" title="Reset" onclick={callChildMethod}></lightning-button>
+    </div>
+    </lightning-card>
 </template>

@@ -26,4 +26,9 @@ export default class PtcParent extends LightningElement {
     handleInput(event){
         this.progressBarValue = event.target.value;
     }
+
+    //Parent To Child communication CALLING CHILD METHOD FROM PARENT
+    callChildMethod(){
+        this.template.querySelector('c-ptc-calling-child-method').resetSlider();
+    }
 }
