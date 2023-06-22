@@ -20,4 +20,10 @@ export default class PtcParent extends LightningElement {
             description : "Third card description."
         }
     ]
+
+    // Parent To Child communication on Action At Parent
+    progressBarValue = 0;
+    handleInput(event){
+        this.progressBarValue = event.target.value;
+    }
 }

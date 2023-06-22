@@ -8,8 +8,17 @@
     -->
     <c-ptc-primitive-child received-number-value=1 received-text-value="sample text" received-boolean-value></c-ptc-primitive-child>
 
-
     <!-- Parent To Child communication using NON PRIMITIVE Data Type-->
     <br>
     <c-ptc-non-primitive-child received-carousel-obj={carouselObj}></c-ptc-non-primitive-child>
+
+    <!-- Parent To Child communication on ACTION AT PARENT-->
+    <br>
+    <lightning-card title="Parent To Child communication on ACTION AT PARENT">
+    <div class="slds-var-m-around_medium">
+        <lightning-input type="number" label="Enter any number" onkeyup={handleInput}></lightning-input>
+        <br>
+        <c-ptc-action-at-parent-child received-progress-bar-value={progressBarValue}></c-ptc-action-at-parent-child>
+    </div>
+    </lightning-card>
 </template>
