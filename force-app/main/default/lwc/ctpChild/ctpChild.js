@@ -2,6 +2,9 @@ import { LightningElement } from 'lwc';
 
 export default class CtpChild extends LightningElement {
 
+    handleLastChildBubble(){
+        console.log('Bubble child >> handleLastChildBubble');
+    }
     closeModal(){
         const myEvent = new CustomEvent('close', {
             bubbles : true,

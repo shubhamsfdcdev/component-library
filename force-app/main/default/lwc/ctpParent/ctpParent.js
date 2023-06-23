@@ -5,8 +5,11 @@ export default class CtpParent extends LightningElement {
     statusFromChild;
     messageFromChild;
 
+    handleLastParentBubble(){
+        console.log('Bubble parent >> handleLastParentBubble');
+    }
+
     showModal(){
-        console.log('Bubble parent >> show modal');
         this.flag=true;
     }
     handleCloseFromChild(event){
