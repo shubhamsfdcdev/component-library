@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Child to Parent">
+        <div class="slds-var-m-around_medium">
+            <lightning-button label="Show Modal" variant="Brand" onclick={showModal}></lightning-button>
+            <h1>{statusFromChild}</h1>
+            <h1>{messageFromChild}</h1>
+        </div>
+    </lightning-card>
+    <template if:true={flag}>
+        <c-ctp-child onclose={handleCloseFromChild}></c-ctp-child>
+    </template>
+</template>
