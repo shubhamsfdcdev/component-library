@@ -1,5 +1,5 @@
 # Communication Mechanisms in the Aura Framework
-In the Aura framework, there are three primary MECHANISM OF COMMUNICATION between components: 
+In the Aura framework, there are three primary mechanisms of communication between components: 
 
 ## 1. Aura Methods:
    - Use Aura methods when you need to invoke a method in a child component from its parent or vice versa.
