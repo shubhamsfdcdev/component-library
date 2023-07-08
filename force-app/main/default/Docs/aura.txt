@@ -1,0 +1,20 @@
+In the Aura framework, there are three primary mechanisms for communication between components: 
+
+1. Aura Methods:
+   - Use Aura methods when you need to invoke a method in a child component from its parent or vice versa.
+   - Use Aura methods when you want to pass data between components that are in a parent-child relationship.
+   - Aura methods are ideal for synchronous communication between components.
+   - Example use case: Invoking a method in a child component to retrieve updated data and refresh the parent component's view.
+
+2. Application Events:
+   - Use application events when you need to communicate between unrelated components, even those that are not in a parent-child relationship.
+   - Application events are useful when multiple components need to listen to and respond to the same event.
+   - Application events are asynchronous and allow loosely coupled communication.
+   - Example use case: Broadcasting a global notification to multiple components when a specific action occurs, such as a record being created or updated.
+
+3. Component Events:
+   - Use component events when you need to communicate between related components that are nested within a common parent component.
+   - Component events are specific to the component hierarchy in which they are defined.
+   - Component events enable communication between components at different levels of the hierarchy without needing to bubble up to the application level.
+   - Aura methods are ideal for synchronous communication between components.
+   - Example use case: Notifying a parent component about an event that occurred in its child component, such as a button click or form submission.
