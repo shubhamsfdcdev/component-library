@@ -36,3 +36,16 @@ Source - GrandChildComponent
    - source -> container -> root
 
 It's important to note that in Aura, by default, events follow the bubble phase.
+
+If you want to handle events during the capture phase or have more control over event propagation, you can utilize the event propagation methods provided by the Aura framework. Here's an alternative approach using the `stopPropagation()` and `stopImmediatePropagation()` methods:
+
+1. `stopPropagation()`:
+   - When called within an event handler, `stopPropagation()` prevents the event from propagating further in the component hierarchy during the bubble phase.
+   - However, other event handlers attached to the same component will still be executed.
+   - In other words, it stops the event from reaching higher-level ancestor components but allows other event handlers within the same component to be executed.
+   - Use `event.stopPropagation()` when you want to prevent the event from being handled by higher-level ancestor components but still want other event handlers within the current component to execute.
+
+2. `stopImmediatePropagation()`:
+   - When called within an event handler, `stopImmediatePropagation()` not only stops the event from propagating further but also prevents any additional event handlers from being executed, including those attached to the same component.
+   - It halts event propagation completely, even within the same component.
+   - Use `event.stopImmediatePropagation()` when you want to completely stop event propagation, preventing any further event handlers from executing.
