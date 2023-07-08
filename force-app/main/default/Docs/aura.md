@@ -24,9 +24,9 @@ In the Aura framework, there are three primary MECHANISM OF COMMUNICATION betwee
 
 In the Aura framework, the event propagation model includes the concepts of the event capture phase and event bubble phase.
 
-Root - ParentComponent
-Container - ChildComponent
-Source - GrandChildComponent
+- Root - ParentComponent
+- Container - ChildComponent
+- Source - GrandChildComponent
 
 ## 1. Event Capture Phase:
    - During the event capture phase, the event travels from the outermost ancestor component(root) down to the component(source) where the event was originally fired.
