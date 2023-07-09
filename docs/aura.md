@@ -13,12 +13,74 @@ In the Aura framework, there are three primary mechanisms of communication betwe
    - Application events are asynchronous and allow loosely coupled communication.
    - Example use case: Broadcasting a global notification to multiple components when a specific action occurs, such as a record being created or updated.
 
+**MyEvent.event**
+```html
+<aura:event type="APPLICATION">
+    <!-- Define any event attributes -->
+    <aura:attribute name="eventMessage" type="String"/>
+</aura:event>
+```
+**MyApplicationEvent.app**
+```html
+<aura:application>
+    <aura:attribute name="inputAttribute" type="String"/>
+    <aura:attribute name="receivedMessage" type="String"/>
+    <!-- Define the event -->
+    <aura:registerEvent name="myApplicationEvent" type="c:MyEvent"/>
+
+    <!-- Handle the event -->
+    <aura:handler event="c:MyEvent" action="{!c.handleEvent}"/>
+
+    <div>
+        <!-- Handle the input -->
+        <lightning:input name="input" label="Enter Message" value="{!v.inputAttribute}"/>
+        <!-- Button to trigger the event -->
+        <lightning:button label="Trigger Event" onclick="{!c.triggerEvent}"/>
+    </div>
+</aura:application>
+```
+**MyApplicationEventController.js**
+```javascript
+({
+    // Function to handle the event
+    handleEvent: function(component, event, helper) {
+        // Retrieve the event attribute values
+        var message = event.getParam("eventMessage");
+        component.set("v.receivedMessage",message)
+        // Perform any desired actions with the attribute values
+        console.log("Received message: " + component.get('v.receivedMessage'));
+    },
+
+    // Function to trigger the event
+    triggerEvent: function(component, event, helper) {
+        // Create a new instance of the event
+        var myEvent = $A.get("e.c:MyEvent");
+
+        // Set the attribute values for the event
+        myEvent.setParams({
+            "eventMessage": component.get('v.inputAttribute')
+        });
+
+        // Fire the event
+        myEvent.fire();
+    }
+})
+```
+
 ## 3. Component Events:
    - Use component events when you need to communicate between related components that are nested within a common parent component.
    - Component events are specific to the component hierarchy in which they are defined.
    - Component events enable communication between components at different levels of the hierarchy without needing to bubble up to the application level.
-   - Aura methods are ideal for synchronous communication between components.
+   - Component events are ideal for synchronous communication between components.
    - Example use case: Notifying a parent component about an event that occurred in its child component, such as a button click or form submission.
+
+**MyEvent.event**
+```html
+<aura:event type="COMPONENT">
+    <!-- Define any event attributes -->
+    <aura:attribute name="message" type="String"/>
+</aura:event>
+```
 
 **MyComponentEvent.component**
 ```html
@@ -36,14 +98,6 @@ In the Aura framework, there are three primary mechanisms of communication betwe
 </aura:component>
 ```
 
-**MyEvent.event**
-```html
-<aura:event type="COMPONENT">
-    <!-- Define any event attributes -->
-    <aura:attribute name="message" type="String"/>
-</aura:event>
-```
-
 **MyComponentEventController.js**
 ```javascript
 ({
@@ -59,7 +113,7 @@ In the Aura framework, there are three primary mechanisms of communication betwe
     // Function to trigger the event
     triggerEvent: function(component, event, helper) {
         // Create a new instance of the event
-        var myEvent = $A.get("e.c:MyEvent");
+        var myEvent = component.getEvent('myComponentEvent');
 
         // Set the attribute values for the event
         myEvent.setParams({
