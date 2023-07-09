@@ -20,6 +20,58 @@ In the Aura framework, there are three primary mechanisms of communication betwe
    - Aura methods are ideal for synchronous communication between components.
    - Example use case: Notifying a parent component about an event that occurred in its child component, such as a button click or form submission.
 
+**MyComponentEvent.component**
+```html
+<aura:component>
+    <!-- Define the event -->
+    <aura:registerEvent name="myComponentEvent" type="c:MyEvent"/>
+
+    <!-- Handle the event -->
+    <aura:handler name="myComponentEvent" event="c:MyEvent" action="{!c.handleEvent}"/>
+
+    <div>
+        <!-- Button to trigger the event -->
+        <lightning:button label="Trigger Event" onclick="{!c.triggerEvent}"/>
+    </div>
+</aura:component>
+```
+
+**MyEvent.event**
+```html
+<aura:event type="COMPONENT">
+    <!-- Define any event attributes -->
+    <aura:attribute name="message" type="String"/>
+</aura:event>
+```
+
+**MyComponentEventController.js**
+```javascript
+({
+    // Function to handle the event
+    handleEvent: function(component, event, helper) {
+        // Retrieve the event attribute values
+        var message = event.getParam("message");
+
+        // Perform any desired actions with the attribute values
+        console.log("Received message: " + message);
+    },
+
+    // Function to trigger the event
+    triggerEvent: function(component, event, helper) {
+        // Create a new instance of the event
+        var myEvent = $A.get("e.c:MyEvent");
+
+        // Set the attribute values for the event
+        myEvent.setParams({
+            "message": "Hello, World!"
+        });
+
+        // Fire the event
+        myEvent.fire();
+    }
+})
+```
+
 # Event Propagation Model in the Aura Framework
 
 In the Aura framework, the event propagation model includes the concepts of the event capture phase and event bubble phase.
