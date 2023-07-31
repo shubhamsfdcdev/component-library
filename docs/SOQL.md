@@ -3,6 +3,7 @@
 ## Command
 
 **LIMIT**
+LIMIT is used to define how many records you wish to pull. If no LIMIT Is used, SOQL will pull every record available.
 ```
 SELECT Name FROM Account WHERE Type = 'Customer' LIMIT 5
 ```
