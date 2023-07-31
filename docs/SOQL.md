@@ -69,6 +69,16 @@ SELECT AVG(Amount) FROM Opportunity WHERE Type = 'New Customer'
 ## LIKE
 LIKE provides a mechanism for matching partial text strings and includes support for wildcards. % is used as a wildcard to match zero or more characters and _ must match exactly one character. The example will return all emails that have force.com and salesforce.com.
 https://www.w3schools.com/sql/sql_like.asp
+
+LIKE Operator	                Description
+WHERE CustomerName LIKE 'a%'	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+
 ```
 SELECT FirstName, LastName, Email FROM Contact WHERE Email LIKE '%force.com%'
 ```
