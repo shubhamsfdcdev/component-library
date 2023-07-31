@@ -2,63 +2,63 @@
 
 ## Command
 
-**LIMIT**
+## LIMIT
 LIMIT is used to define how many records you wish to pull. If no LIMIT Is used, SOQL will pull every record available.
 ```
 SELECT Name FROM Account WHERE Type = 'Customer' LIMIT 5
 ```
 
-**OFFSET**
+## OFFSET
 ```
 SELECT Name FROM Account WHERE Type = 'Customer' OFFSET 5
 ```
 
-**ORDER BY**
+## ORDER BY
 ```
 SELECT Name FROM Account ORDER BY AnnualRevenue DESC
 ```
 
-**OFFSET**
+## OFFSET
 ```
 SELECT Name FROM Account WHERE Type = 'Customer' OFFSET 5
 ```
 
-**IN**
+## IN
 ```
 SELECT Name FROM Account WHERE Id IN (SELECT AccountID FROM CustomObject__c WHERE Type__c = 'Customer')
 ```
 
-**GROUP BY**
+## GROUP BY
 ```
 SELECT LeadSource, COUNT(Company) FROM Lead GROUP BY LeadSource
 ```
 
-**COUNT()**
+## COUNT()
 ```
 SELECT COUNT(Id) FROM Account
 ```
 
-**COUNT_DISTINCT**
+## COUNT_DISTINCT
 ```
 SELECT COUNT_DISTINCT(Company) FROM Lead
 ```
 
-**MIN()**
+## MIN()
 ```
 SELECT MIN(AnnualRevenue) FROM Account
 ```
 
-**MAX()**
+## MAX()
 ```
 SELECT MAX(AnnualRevenue) FROM Account
 ```
 
-**SUM()**
+## SUM()
 ```
 SELECT SUM(Amount) FROM Opportunity WHERE IsClosed = false AND Probability > 60
 ```
 
-**AVG()**
+## AVG()
 ```
 SELECT AVG(Amount) FROM Opportunity WHERE Type = 'New Customer'
 ```
