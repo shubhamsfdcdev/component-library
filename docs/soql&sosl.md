@@ -1,5 +1,3 @@
-# SOQL
-
 ## SOQL Cheatsheet
 
 | Command           | Description                                                          | Example                                                      |
