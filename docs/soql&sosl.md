@@ -19,7 +19,7 @@ for(Account a : [SELECT Name,(SELECT FirstName,LastName FROM Contacts) FROM Acco
 
 ## Custom Object
 ```Apex
-for(Customer__c c : [select First_Name__c, (select Address_Line_1__c, City__c from Address__r) from Customer__c]){
+for(Customer__c c : [SELECT First_Name__c, (SELECT Address_Line_1__c, City__c FROM Address__r) FROM Customer__c]){
     for(Address__c a : c.Address__r){
         System.debug('FirstName='+c.First_Name__c+'--Address Line 1='+a.Address_Line_1__c+' City='+a.City__c);
     }
