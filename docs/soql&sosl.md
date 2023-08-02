@@ -1,5 +1,38 @@
-## SOQL Cheatsheet
+# Child to Parent
 
+## Standard Object
+`[Select Name, Account.Name from Contact]`
+
+## Custom Object
+`[SELECT Id, Name, Customer__r.Name FROM Address__c]`
+
+# Parent to Child
+
+## Standard Object
+```Apex
+List<Account> accountList = [select Name,(Select FirstName,LastName from Contacts) from Account LIMIT 10];
+
+for(Account a : accountList){
+    List<Contact> conList = a.Contacts;
+    for(Contact c : conList){
+        System.debug('Account Name='+a.Name+' -- Contact FirstName='+c.FirstName+' LastName='+c.LastName);
+    }
+}
+```
+
+## Custom Object
+```Apex
+List<Customer__c> custList = [select First_Name__c, (select Address_Line_1__c, City__c from Addresses__r) from Customer__c];
+
+for(Customer__c c : custList){
+    List<Address__c> addrList = c.Addresses__r;
+    for(Address__c a : addrList){
+        System.debug('FirstName='+c.First_Name__c+'--Address Line 1='+a.Address_Line_1__c+' City='+a.City__c);
+    }
+}
+```
+
+# SOQL Cheatsheet
 | Command           | Description                                                          | Example                                                      |
 | ----------------- | -------------------------------------------------------------------- | ------------------------------------------------------------ |
 | SELECT            | SELECT is the first command you will need in any SOQL statement and is used as a prefix for returning fields from a dataset, it is required always. Multiple fields can be selected by using a comma to separate them. | `SELECT Name, Type, BillingCountry FROM Account`              |
@@ -23,8 +56,7 @@
 | GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Industry, Type, COUNT(Id) From Account GROUP BY ROLLUP (Industry, Type)` |
 | GROUP BY CUBE     | GROUP BY CUBE clause is used in SOQL query to add subtotals for all combinations of a grouped field in the query results. | `SELECT Type, BillingCountry, GROUPING(Type) grpType, GROUPING(BillingCountry) grpCity, COUNT(Id) accnts FROM Account GROUP BY CUBE(Type, BillingCountry) ORDER BY GROUPING(Type), GROUPING(BillingCountry)` |
 
-## SOQL LIKE Operator
-
+# SOQL LIKE Operator
 | SOQL Expression                    | Description                                    |
 | ---------------------------------- | ---------------------------------------------- |
 | `WHERE CustomerName LIKE 'a%'`     | Finds any values that start with "a".         |
@@ -35,8 +67,7 @@
 | `WHERE CustomerName LIKE 'a__%'`   | Finds any values that start with "a" and are at least 3 characters in length. |
 | `WHERE ContactName LIKE 'a%o'`     | Finds any values that start with "a" and end with "o". |
 
-## SOQL Date Functions
-
+# SOQL Date Functions
 | Command           | Example                                                         |
 | ----------------- | --------------------------------------------------------------- |
 | TODAY             | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = TODAY` |
@@ -48,8 +79,7 @@
 | LAST_MONTH        | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_MONTH` |
 | THIS_YEAR         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = THIS_YEAR` |
 
-## SOSL Cheatsheet
-
+# SOSL Cheatsheet
 | Command              | Description                                                     | Example                                                                                   |
 | -------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | FIND                 | The FIND command is used to search for specific keywords in the Salesforce objects. | `FIND {search_query}` in ALL FIELDS RETURNING Account(Name, Industry), Contact, Opportunity` |
