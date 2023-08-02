@@ -19,10 +19,10 @@
 | MAX()             | Returns the maximum value of a field.                               | `SELECT MAX(AnnualRevenue) FROM Account`                      |
 | SUM()             | Returns the total sum of a numeric field.                           | `SELECT SUM(Amount) FROM Opportunity WHERE IsClosed = false AND Probability > 60` |
 | AVG()             | Returns the average value of a numeric field.                        | `SELECT AVG(Amount) FROM Opportunity WHERE Type = 'New Customer'` |
-
-## LIKE
-LIKE provides a mechanism for matching partial text strings and includes support for wildcards. % is used as a wildcard to match zero or more characters and _ must match exactly one character. The example will return all emails that have force.com and salesforce.com.
-https://www.w3schools.com/sql/sql_like.asp
+|GROUP BY HAVING   | GROUP BY HAVING Clause is used in SOQL to apply a condition based on a group field values. | `SELECT Industry, COUNT(Id) From Account GROUP BY 
+Industry HAVING Industry IN ('Agriculture','Manufacturing','Construction')` |
+|GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Industry, Type, COUNT(Id) From Account 
+GROUP BY ROLLUP (Industry, Type)`                      |
 
 ## SOQL LIKE Operator
 
