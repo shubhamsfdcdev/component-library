@@ -67,11 +67,12 @@ for(Customer__c c : [SELECT First_Name__c, (SELECT Address_Line_1__c, City__c FR
 | TODAY             | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = TODAY` |
 | YESTERDAY         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = YESTERDAY` |
 | TOMORROW          | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = TOMORROW` |
+| LAST_WEEK         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_WEEK` |
 | THIS_WEEK         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = THIS_WEEK` |
-| NEXT_MONTH        | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = NEXT_MONTH` |
-| LAST_90_DAYS      | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_90_DAYS` |
-| LAST_MONTH        | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_MONTH` |
+| NEXT_WEEK         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = NEXT_WEEK` |
+| THIS_MONTH        | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = THIS_MONTH` |
 | THIS_YEAR         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = THIS_YEAR` |
+| LAST_90_DAYS      | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_90_DAYS` |
 
 # SOSL Cheatsheet
 | Command              | Description                                                     | Example                                                                                   |
