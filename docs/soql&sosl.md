@@ -20,8 +20,8 @@
 | SUM()             | Returns the total sum of a numeric field.                           | `SELECT SUM(Amount) FROM Opportunity WHERE IsClosed = false AND Probability > 60` |
 | AVG()             | Returns the average value of a numeric field.                        | `SELECT AVG(Amount) FROM Opportunity WHERE Type = 'New Customer'` |
 | GROUP BY HAVING   | GROUP BY HAVING Clause is used in SOQL to apply a condition based on a group field values. | `SELECT Industry, COUNT(Id) From Account GROUP BY Industry HAVING Industry IN ('Agriculture','Manufacturing','Construction')` |
-| GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Industry, Type, COUNT(Id) From Account 
-GROUP BY ROLLUP (Industry, Type)` |
+| GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Industry, Type, COUNT(Id) From Account GROUP BY ROLLUP (Industry, Type)` |
+| GROUP BY CUBE     | GROUP BY CUBE clause is used in SOQL query to add subtotals for all combinations of a grouped field in the query results. | `SELECT Type, BillingCountry, GROUPING(Type) grpType, GROUPING(BillingCountry) grpCity, COUNT(Id) accnts FROM Account GROUP BY CUBE(Type, BillingCountry) ORDER BY GROUPING(Type), GROUPING(BillingCountry)` |
 
 ## SOQL LIKE Operator
 
@@ -34,10 +34,6 @@ GROUP BY ROLLUP (Industry, Type)` |
 | `WHERE CustomerName LIKE 'a_%'`    | Finds any values that start with "a" and are at least 2 characters in length. |
 | `WHERE CustomerName LIKE 'a__%'`   | Finds any values that start with "a" and are at least 3 characters in length. |
 | `WHERE ContactName LIKE 'a%o'`     | Finds any values that start with "a" and end with "o". |
-
-```
-SELECT FirstName, LastName, Email FROM Contact WHERE Email LIKE '%force.com%'
-```
 
 ## SOQL Date Functions
 
