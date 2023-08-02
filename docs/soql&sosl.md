@@ -1,7 +1,7 @@
 # Child to Parent
 
 ## Standard Object
-`[Select Name, Account.Name from Contact]`
+`[SELECT Name, Account.Name FROM Contact]`
 
 ## Custom Object
 `[SELECT Id, Name, Customer__r.Name FROM Address__c]`
@@ -10,11 +10,8 @@
 
 ## Standard Object
 ```Apex
-List<Account> accountList = [select Name,(Select FirstName,LastName from Contacts) from Account LIMIT 10];
-
-for(Account a : accountList){
-    List<Contact> conList = a.Contacts;
-    for(Contact c : conList){
+for(Account a : [SELECT Name,(SELECT FirstName,LastName FROM Contacts) FROM Account LIMIT 10]){
+    for(Contact c : a.Contacts){
         System.debug('Account Name='+a.Name+' -- Contact FirstName='+c.FirstName+' LastName='+c.LastName);
     }
 }
@@ -22,11 +19,8 @@ for(Account a : accountList){
 
 ## Custom Object
 ```Apex
-List<Customer__c> custList = [select First_Name__c, (select Address_Line_1__c, City__c from Addresses__r) from Customer__c];
-
-for(Customer__c c : custList){
-    List<Address__c> addrList = c.Addresses__r;
-    for(Address__c a : addrList){
+for(Customer__c c : [select First_Name__c, (select Address_Line_1__c, City__c from Address__r) from Customer__c]){
+    for(Address__c a : c.Address__r){
         System.debug('FirstName='+c.First_Name__c+'--Address Line 1='+a.Address_Line_1__c+' City='+a.City__c);
     }
 }
