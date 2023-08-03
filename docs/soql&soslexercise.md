@@ -29,4 +29,11 @@ SELECT MAX(Amount), MIN(Amount)
 FROM Opportunity 
 WHERE StageName = 'Closed Won'
 ```
-
+### Question 5:
+Retrieve the count of Opportunities and the total amount (sum) of all Opportunities for each Account. Include only Opportunity with an Amount greater than $5,000.
+```
+SELECT Count(Id), Account.Name, SUM(Amount) 
+FROM Opportunity 
+WHERE Amount >= 5000 
+GROUP BY Account.Name
+```
