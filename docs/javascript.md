@@ -1,3 +1,76 @@
+# Variables
+
+## var Keyword
+It can be updated and can be redeclared.
+It supports global and function scope but not block scope.
+```
+GLOBAL SCOPE
+var course = "zero to hero";
+console.log(window.course);//zero to hero
+
+FUNCTION SCOPE
+function abc(){
+    var anotherCourse = "hero in lwc";
+    console.log(anotherCourse);//hero in lwc
+}
+abc()
+console.log(anotherCourse);//Uncaught ReferenceError: Since it supports function scope hence it is not printing anotherCourse outside loop.
+
+BLOCK SCOPE
+if(2===2){
+    var x = 10;
+}
+console.log(window.x);//10 Since it do not support bock scope hence printing x outside loop.
+```
+## let Keyword
+It can be updated and cannot be redeclared. 
+It supports block and function scope but not global scope.
+```
+GLOBAL SCOPE
+let course = "zero to hero";
+console.log(course);//zero to hero
+console.log(window.course);//undefined because it does not support global scope.
+
+FUNCTION SCOPE
+function abc(){
+    let anotherCourse = "hero in lwc";
+    console.log(anotherCourse);//hero in lwc
+}
+abc()
+console.log(anotherCourse);//Uncaught ReferenceError: Since it supports function scope hence it is not printing anotherCourse outside loop.
+
+BLOCK SCOPE
+if(2===2){
+    let x = 10;
+    console.log(x);//10
+}
+console.log(window.x);//undefined. Since it supports block scope hence it is not printing x outside loop.
+```
+## const Keyword
+It can't be updated and cannot be redeclared.
+It supports block and function scope but not global scope.
+```
+GLOBAL SCOPE
+const course = "zero to hero";
+console.log(course);//zero to hero
+console.log(window.course);//undefined because it does not support global scope.
+
+FUNCTION SCOPE
+function abc(){
+    const anotherCourse = "hero in lwc";
+    console.log(anotherCourse);//hero in lwc
+}
+abc()
+console.log(anotherCourse);//Uncaught ReferenceError: Since it supports function scope hence it is not printing anotherCourse outside loop.
+
+BLOCK SCOPE
+if(2===2){
+    const x = 10;
+    console.log(x);//10
+}
+console.log(window.x);//undefined. Since it supports block scope hence it is not printing x outside loop.
+```
+
 # Spread Operator
 
 ## Array
@@ -67,7 +140,7 @@ newArrObj[0].name = "superman";
 console.log(arrObj);//{name:"superman"},{name:"salesforce"}
 console.log(newArrObj);//{name:"superman"},{name:"salesforce"}
 ```
-## Hack for Nested Copy
+### Hack for Nested Copy
 ```
 var arrObj = [
     {name:"nikhil"},
