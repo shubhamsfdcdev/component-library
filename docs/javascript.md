@@ -187,4 +187,44 @@ CONVERT TO STRING
 console.log(JSON.stringify(obj));//{"name":"Salesforce","age":25}
 CONVERT STRING TO OBJECT
 console.log(JSON.parse(JSON.stringify(obj)));//{name: 'Salesforce', age: 25}
-``````
+```
+# Promise
+A promise is used to handle asynchronous operation. A promise has three state. 
+1. Pending()
+2. fulfilled()
+3. rejected()
+
+Use Case
+1. Fetching data from server
+2. Loading file from server
+```
+function checkIsSuccess(data){
+    return new Promise(function(resolve, reject){
+        if(data==="success"){
+            return resolve("Successfully Executed");
+        }else{
+            return reject("Unsuccessfully Executed");
+        }
+    })
+}
+
+//RESOLVE CONDITION
+checkIsSuccess('success').then(function(result){
+    console.log(result);
+}).catch(function(error){
+    console.error(error);
+})
+
+//REJECT CONDITION
+checkIsSuccess('').then(function(result){
+    console.log(result);
+}).catch(function(error){
+    console.error(error);
+})
+
+fetch('https://api.github.com/users/karkranikhil').then(function(result){
+    return result.json();
+}).then(function(response){
+    console.log(response);
+})
+```
