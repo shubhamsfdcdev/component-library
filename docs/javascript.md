@@ -228,3 +228,27 @@ fetch('https://api.github.com/users/karkranikhil').then(function(result){
     console.log(response);
 })
 ```
+# Import & Export
+
+//NORMAL EXPORT
+export const PI = 3.14;
+export function add(a,b){
+    console.log(a+b);
+}
+
+//EXPORT TOGETHER
+export {PI, add}
+import {PI, add} from './util.js'
+
+//EXPORT WITH ALIAS
+export {PI as PI_DATA, add}
+import {PI_DATA, add} from './util.js'
+
+//EXPORT DEFAULT(There can only be one default method)
+export default function minus(a,b){
+    console.log(a-b);
+}
+import minus from './util.js'
+
+//IMPORT ALL
+import * as UTILS from './util.js'
