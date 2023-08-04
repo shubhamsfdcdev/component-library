@@ -70,9 +70,7 @@ if(2===2){
 }
 console.log(window.x);//undefined. Since it supports block scope hence it is not printing x outside loop.
 ```
-
 # Spread Operator
-
 ## Array
 ```
 var arr = ["a", "b", "c"];
@@ -176,3 +174,17 @@ let b = 20;
 console.log(`The sum of ${a} and ${b} is ${a+b}`);
 //The sum of 10 and 20 is 30
 ```
+# Object/JSON
+```
+let obj = {
+    name:"Salesforce",
+    age:25
+};
+console.log(Object.keys(obj));//['name', 'age']
+console.log(Object.values(obj));//['Salesforce', 25]
+
+CONVERT TO STRING
+console.log(JSON.stringify(obj));//{"name":"Salesforce","age":25}
+CONVERT STRING TO OBJECT
+console.log(JSON.parse(JSON.stringify(obj)));//{name: 'Salesforce', age: 25}
+``````
