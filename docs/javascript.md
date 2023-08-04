@@ -151,3 +151,28 @@ newArrObj[0].name = "superman";
 console.log(arrObj);//{name:"nikhil"},{name:"salesforce"}
 console.log(newArrObj);//{name:"superman"},{name:"salesforce"}
 ``` 
+# Destructuring
+Destructuring is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient.
+```
+let arr = ["amazon","google"];
+let [company1, company2] = arr;
+console.log(company1);//amazon
+console.log(company2);//google
+
+let options = {
+    title:"zero to hero",
+    age:23,
+    type:"CRM"
+}
+let {title, age, type}//tis values should be same as key = options;
+console.log(title);//zero to hero
+console.log(age);//23
+console.log(type);//CRM
+```
+# String Interpolation
+```
+let a = 10;
+let b = 20;
+console.log(`The sum of ${a} and ${b} is ${a+b}`);
+//The sum of 10 and 20 is 30
+```
