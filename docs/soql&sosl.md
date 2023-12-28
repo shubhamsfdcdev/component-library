@@ -97,3 +97,9 @@ System.debug(database.query(dynamicQuery));
 | RETURNING SNIPPET()  | The RETURNING SNIPPET() command is used to retrieve snippets of the matched text around the keywords. | `FIND {search_query} RETURNING Account(Name WHERE Name != NULL ORDER BY CreatedDate DESC LIMIT 5) RETURNING SNIPPET(name WHERE Name != NULL) ` |
 | WITH HIGHLIGHT       | The WITH HIGHLIGHT command is used to highlight the matched keywords in the search results. | `FIND {search_query} RETURNING Account(Name WHERE Name != NULL ORDER BY CreatedDate DESC LIMIT 5) WITH HIGHLIGHT` |
 
+```Apex
+List<List<sObject>> result = [FIND 'Acme' in ALL FIELDS RETURNING 
+                              Account(Name, Industry), Contact(Name), Opportunity(Name)];
+List<Account> accList = (List<Account>) result.get(0);
+System.debug(accList);//(Account:{Name=Acme, Industry=Finance, Id=0015g000007lbJFAAY})
+```
