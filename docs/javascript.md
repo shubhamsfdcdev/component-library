@@ -162,7 +162,7 @@ let options = {
     age:23,
     type:"CRM"
 }
-let {title, age, type}//tis values should be same as key = options;
+let {title, age, type} = options;//tis values should be same as key = options;
 console.log(title);//zero to hero
 console.log(age);//23
 console.log(type);//CRM

@@ -74,6 +74,16 @@ for(Customer__c c : [SELECT First_Name__c, (SELECT Address_Line_1__c, City__c FR
 | THIS_YEAR         | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = THIS_YEAR` |
 | LAST_90_DAYS      | `SELECT Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = LAST_90_DAYS` |
 
+# Dynamic SOQL
+By using dynamic SOQL we can prepare query at run time. We need to execute dynamic SOQL by using standard method i:e; Database.query()
+
+```Apex
+String fieldApiNames = 'Id, Name';
+String objectApiName = 'Account';
+String dynamicQuery = 'Select ' + fieldApiNames + ' FROM ' + objectApiName +' LIMIT 5';
+System.debug(database.query(dynamicQuery));
+```
+
 # SOSL Cheatsheet
 | Command              | Description                                                     | Example                                                                                   |
 | -------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
