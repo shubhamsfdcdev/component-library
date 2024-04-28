@@ -47,8 +47,7 @@ for(Customer__c c : [SELECT First_Name__c, (SELECT Address_Line_1__c, City__c FR
 | SUM()             | Returns the total sum of a numeric field.                           | `SELECT SUM(Amount) FROM Opportunity WHERE IsClosed = false AND Probability > 60` |
 | AVG()             | Returns the average value of a numeric field.                        | `SELECT AVG(Amount) FROM Opportunity WHERE Type = 'New Customer'` |
 | GROUP BY HAVING   | GROUP BY HAVING Clause is used in SOQL to apply a condition based on a group field values. | `SELECT Industry, COUNT(Id) From Account GROUP BY Industry HAVING Industry IN ('Agriculture','Manufacturing','Construction')` |
-| GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Industry, Type, COUNT(Id) From Account GROUP BY ROLLUP (Industry, Type)` |
-| GROUP BY CUBE     | GROUP BY CUBE clause is used in SOQL query to add subtotals for all combinations of a grouped field in the query results. | `SELECT Type, BillingCountry, GROUPING(Type) grpType, GROUPING(BillingCountry) grpCity, COUNT(Id) accnts FROM Account GROUP BY CUBE(Type, BillingCountry) ORDER BY GROUPING(Type), GROUPING(BillingCountry)` |
+| GROUP BY ROLLUP   | GROUP BY ROLLUP Clause is used to add subtotals to get aggregates data in the query results. It returns multiple levels of subtotal rows. We can add up to three fields in a comma-separated list in GROUP BY ROLLUP Clause statement. | `SELECT Status, COUNT(Name) FROM Lead GROUP BY ROLLUP(Status)` |
 
 # SOQL LIKE Operator
 | SOQL Expression                    | Description                                    |
