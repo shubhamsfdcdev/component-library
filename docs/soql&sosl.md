@@ -89,11 +89,8 @@ System.debug(database.query(dynamicQuery));
 | FIND                 | The FIND command is used to search for specific keywords in the Salesforce objects. | `FIND {search_query}` in ALL FIELDS RETURNING Account(Name, Industry), Contact, Opportunity` |
 | RETURNING            | The RETURNING command is used to specify the objects and fields to retrieve in the search results. | `FIND {search_query} RETURNING Account(Name, Industry), Contact, Opportunity`            |
 | IN                   | The IN command is used to narrow the search to specific objects. | `FIND {search_query} IN NAME FIELDS RETURNING Account(Name, Industry)`                    |
-| WITH                 | The WITH command is used to filter the search results based on specific criteria. | `FIND {search_query} WITH DATA CATEGORY Geography__c AT (usa__c) RETURNING Account(Name)` |
 | LIMIT                | The LIMIT command is used to limit the number of search results. | `FIND {search_query} RETURNING Account LIMIT 5`                                           |
 | IN ALL FIELDS        | The IN ALL FIELDS command is used to search for the query in all searchable fields of the specified objects. | `FIND {search_query} IN ALL FIELDS RETURNING Account(Name), Contact(FirstName, LastName)` |
-| DATA CATEGORY        | The DATA CATEGORY command is used to search for records in specific data categories. | `FIND {search_query} WITH DATA CATEGORY Geography__c AT (usa__c) RETURNING Account(Name)` |
-| RETURNING SNIPPET()  | The RETURNING SNIPPET() command is used to retrieve snippets of the matched text around the keywords. | `FIND {search_query} RETURNING Account(Name WHERE Name != NULL ORDER BY CreatedDate DESC LIMIT 5) RETURNING SNIPPET(name WHERE Name != NULL) ` |
 | WITH HIGHLIGHT       | The WITH HIGHLIGHT command is used to highlight the matched keywords in the search results. | `FIND {search_query} RETURNING Account(Name WHERE Name != NULL ORDER BY CreatedDate DESC LIMIT 5) WITH HIGHLIGHT` |
 
 ```Apex
